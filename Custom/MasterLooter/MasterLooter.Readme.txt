@@ -1,0 +1,73 @@
+daat99's Master Looter + Ledger system
+
+V1.03 06/06/2012:
+	Added Dual-List setting: Each bag has 2 looting lists, primary and secondary. 
+		Only one can be active at any given time. 
+		This allows players the freedom to cycle between two list for different situations in an instant.
+	Added "Default" list: Added default BaseType and ItemType lists to Utils file.
+		The default lists will cover most of the commonly looted items and will take only 29 entries.
+		Players can't get most of the base types on their own (interfaces) and in order ot get the same result they'll need to fill over 180 entries.
+	Added Reset to "Default": "Default" button on the setup gump will reset the current active list to the hardcoded defaults.
+	FIX: Fixed a bug that allowed players to add the same item to the base types list. 
+		This item won't be lootable and will waste resources.
+	
+
+
+V1.02 05/06/2012:
+	Fixed wrong condition looting check in MasterLooterBackpack.cs Thanks GhostRiderGrey
+
+V1.01 05/06/2012:
+	Fix: Removed a debug line that was left in MasterLooterBackpack.cs by accident. Thanks GhostRiderGrey.
+
+V1.0 04/06/2012:
+	Initial release
+
+Description:
+	A loot and ledger system that allows the player to configure his own loot settings.
+	This system was made with strong emphasis on performance while still allowing complete customization control for the players.
+	This system is compatible with my old Token system.
+	Master Looter backpack+Ledger(linked to the first player that uses it) which allows the following context menu options:
+	Act as a ledger (default hardcoded, changed via [props or enable deeds which are supplied with the system)
+	Account context menu: See a ledger gump that allows the user to withdraw and deposit gold and/or tokens (based on settings) up to 10^18 each (that is 1 followed by 18 0's!!!)
+	Setup context menu: Configure looting system settings, which items to loot etc.
+
+	Add specific items to the loot list.
+	Add Common type of multiple items (target 2 items that has a common parent - 2 scrolls and you get them all)
+	Mechanism which makes sure there won't be duplicate or redundant entries in the list (minimizes CPU/Memory consumption).
+	Refill from stock context menu: In case of a ledger the backpack will swift through the players main backpack (and sub containers) and fills his Master Looter ledger with the gold and/or tokens it finds.
+	[loot command with the following functionality (based on the players Master Looter backpack settings)
+	Loot all items on ground and in corpses within 3 tiles range (in each direction)
+	Loot just the items from a backpack-specific list within the same range.
+	Loot just the gold and/or tokens (useful for champ spawns).
+	Stops looting before the player gets overloaded.
+	Delete the corpses (empty/all: setup gump) the player looted successfully without being overloaded and reward him with tokens and gold.
+
+FAQ:
+
+	Q: I'm using your token system but whatever I do the tokens are disabled, what should I do?
+	A: Open all the "*.cs" files that came with this system and make sure all of them have the following line at the top (uncommented): "#define USE_TOKENS".
+
+	Q: I don't use your token system OR I get "The type or namespace name 'Daat99Tokens' could not be found" error, what should I do?
+	A: Open the files that cause this error and make sure the line at the top "#define USE_TOKENS" is commented out like this "//#define USE_TOKENS"
+
+	Q: I'm using RunUO 2.2 OR I get "No overload for method 'CheckLoot' takes '1' arguments" error, what should I do?
+	A: Open the files that cause this error and uncomment the line at the top "//#define RunUO2_2" so it'll look like this: "#define RunUO2_2".
+
+	Q: I'm using earlier version of RunUO OR I get "No overload for method 'CheckLoot' takes '2' arguments" error, what should I do?
+	A: Open the files that cause this error and make sure the line at the top "#define RunUO2_2" is commented out like this "//#define RunUO2_2"
+
+	Q: I want to give tokens to players directrly into their ledger from another file, what should I do?
+	A: You need to add the following line where you want it (player is the PlayerMobile, amount is an int): "Daat99MasterLooterSystem.Daat99MasterLootersUtils.GivePlayerTokens(player, amount);"
+
+	Q: I want to give gold to players directrly into their ledger from another file, what should I do?
+	A: You need to add the following line where you want it (player is the PlayerMobile, amount is an int): "Daat99MasterLooterSystem.Daat99MasterLootersUtils.GivePlayerGold(player, amount);"
+
+	NOTE: 
+	Calling the method that gives players gold or tokens will return "true" if the player recieved his reward and "false" otherwise.
+	It'll be wise to check this return value and decide what you do in case it failed or succeeded.
+	For example, if you add it on player kills and you don't want to remove the old token system code than you need to execute the old code only if this failed.
+
+
+
+Credits: A big thank you for (in alphabetical order):
+	Alyssa Dark, Dante, GhostRiderGrey and Vor.
