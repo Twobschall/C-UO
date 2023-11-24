@@ -63,23 +63,23 @@ namespace Server.Engines.XmlSpawnerExtMod
 		/* level up multiplier */
 		/* math = current level * multipier = amountneededfornextlevelup */
 		/* reduce these numbers to lower the amount of exp needed per level */
-		private int m_l2to20multipier		= 1000;		// leve 2 to level 20 
-		private int m_l21to40multiplier		= 2000;		// leve 21 to level 40 
-		private int m_l41to60multiplier		= 4000;		// leve 41 to level 60 
-		private int m_l61to70multiplier		= 7000;		// leve 61 to level 70 
-		private int m_l71to80multiplier		= 9000;		// leve 71 to level 80 
-		private int m_l81to90multipier		= 11000;		// leve 81 to level 90 
-		private int m_l91to100multipier		= 13000;		// leve 91 to level 100 
-		private int m_l101to110multiplier	= 15000;		// leve 101 to level 110 
-		private int m_l111to120multiplier	= 17000;		// leve 110 to level 120 
-		private int m_l121to130multiplier	= 19000;		// leve 121 to level 130 
-		private int m_l131to140multiplier	= 22000;		// leve 131 to level 140 
-		private int m_l141to150multiplier	= 25000;		// leve 141 to level 150 
-		private int m_l151to160multiplier	= 35000;		// leve 151 to level 160 
-		private int m_l161to170multiplier	= 39000;		// leve 161 to level 170 
-		private int m_l171to180multiplier	= 41100;		// leve 171 to level 180 
-		private int m_l181to190multiplier	= 43000;		// leve 181 to level 190 
-		private int m_l191to200multiplier	= 60000;		// leve 191 to level 200
+		private int m_l2to20multipier		= 100;		// leve 2 to level 20 
+		private int m_l21to40multiplier		= 200;		// leve 21 to level 40 
+		private int m_l41to60multiplier		= 400;		// leve 41 to level 60 
+		private int m_l61to70multiplier		= 700;		// leve 61 to level 70 
+		private int m_l71to80multiplier		= 900;		// leve 71 to level 80 
+		private int m_l81to90multipier		= 1100;		// leve 81 to level 90 
+		private int m_l91to100multipier		= 1300;		// leve 91 to level 100 
+		private int m_l101to110multiplier	= 1500;		// leve 101 to level 110 
+		private int m_l111to120multiplier	= 1700;		// leve 110 to level 120 
+		private int m_l121to130multiplier	= 1900;		// leve 121 to level 130 
+		private int m_l131to140multiplier	= 2200;		// leve 131 to level 140 
+		private int m_l141to150multiplier	= 2500;		// leve 141 to level 150 
+		private int m_l151to160multiplier	= 3500;		// leve 151 to level 160 
+		private int m_l161to170multiplier	= 3900;		// leve 161 to level 170 
+		private int m_l171to180multiplier	= 4110;		// leve 171 to level 180 
+		private int m_l181to190multiplier	= 4300;		// leve 181 to level 190 
+		private int m_l191to200multiplier	= 6000;		// leve 191 to level 200
 		
 		/* configured equipment section */
 		private bool m_activatedynamiclevelsystem			=	false;

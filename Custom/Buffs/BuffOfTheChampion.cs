@@ -5,11 +5,12 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Events;
 
-namespace BuffOfTheChampion
+namespace Server.Custom
 {
     public class BuffOfTheChampion
     {
-        private static Dictionary<Mobile, bool> BuffsOfTheChampionApplied = new Dictionary<Mobile, bool>();
+        public static Dictionary<Mobile, bool> BuffOfTheChampionApplied = new Dictionary<Mobile, bool>();
+        public static Dictionary<Mobile, DateTime> BuffOfTheChampionStartTime = new Dictionary<Mobile, DateTime>();
 
         public static void Initialize()
         {
@@ -54,7 +55,7 @@ namespace BuffOfTheChampion
             TimeSpan duration = TimeSpan.FromHours(2);
 
             // Calculate the percentage increase in stats (5% in this case)
-            double percentageIncrease = 0.05;
+            double percentageIncrease = 0.1;
 
             // Calculate the increased stats based on the current stats
             int increasedStr = (int)(mobile.RawStr * percentageIncrease);
@@ -66,17 +67,9 @@ namespace BuffOfTheChampion
             mobile.AddStatMod(new StatMod(StatType.Dex, "BuffOfTheChampion_Dex", increasedDex, duration));
             mobile.AddStatMod(new StatMod(StatType.Int, "BuffOfTheChampion_Int", increasedInt, duration));
 
-            // Define the custom buff icon (replace 'Berserk' with the actual icon you have)
-            BuffIcon customBuffIcon = BuffIcon.BuffOfTheChampion; // Replace with your desired icon
-
-            // Set the text that will be displayed when you hover over the buff icon
-            TextDefinition buffText = "Buff Of The Champion";
-
-            // Use your server-specific method to add a buff with an icon and custom text
-            BuffInfo.AddBuff(mobile, new BuffInfo(customBuffIcon, 1070812, buffText, duration, mobile));
-
             // Mark the buff as applied for the mobile
-            BuffsOfTheChampionApplied[mobile] = true;
+            BuffOfTheChampionApplied[mobile] = true;
+            BuffOfTheChampionStartTime[mobile] = DateTime.UtcNow;
 
             // Optionally, you can notify the player about the buff
             mobile.SendMessage("You have received the Buff of the Champion for two hours!");
@@ -84,10 +77,24 @@ namespace BuffOfTheChampion
             // You may also add additional effects or visuals here
         }
 
+        public static TimeSpan GetRemainingBuffDuration(Mobile mobile)
+        {
+            if (BuffOfTheChampionApplied.ContainsKey(mobile) && BuffOfTheChampionApplied[mobile])
+            {
+                DateTime startTime = BuffOfTheChampionStartTime[mobile];
+                TimeSpan elapsed = DateTime.UtcNow - startTime;
+                TimeSpan remaining = TimeSpan.FromHours(2) - elapsed;
+
+                return remaining > TimeSpan.Zero ? remaining : TimeSpan.Zero;
+            }
+
+            return TimeSpan.Zero;
+        }
+
         private static bool HasBuff(Mobile mobile)
         {
             // Check if the buff is applied to the mobile
-            return BuffsOfTheChampionApplied.ContainsKey(mobile) && BuffsOfTheChampionApplied[mobile];
+            return BuffOfTheChampionApplied.ContainsKey(mobile) && BuffOfTheChampionApplied[mobile];
         }
     }
 }

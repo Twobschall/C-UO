@@ -33,6 +33,7 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(TravelBook), 10000, 20, 0x2D50, 0));
                 Add(new GenericBuyInfo(typeof(BankStone), 10000, 20, 0x1F1C, 0));
                 Add(new GenericBuyInfo(typeof(PetLeash), 200000, 20, 0x1374, 0));
+                Add(new GenericBuyInfo(typeof(EtherealHorse), 200000, 20, 0x20DD, 0));
                 Add(new GenericBuyInfo(typeof(OneHanderDeed), 250000, 20, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(NightSightDeedWearable), 10000, 20, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(RaiseMaxLevelScroll), 1000000, 20, 0x14F0, 0));
