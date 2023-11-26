@@ -1381,25 +1381,5 @@ namespace Server
 			#endregion
         }
 		#endregion
-		
-		/* Vendor Discount and Level Requirements! */
-		private static Type[] _TypesVendor1 = new[] 
-		{ 
-			typeof(LevelVendor10),typeof(LevelVendor20),typeof(LevelVendor30),typeof(LevelVendor40),
-			typeof(LevelVendor50),typeof(LevelVendor60),typeof(LevelVendor70),typeof(LevelVendor80),
-			typeof(LevelVendor90),typeof(LevelVendor100),typeof(LevelVendor120),typeof(LevelVendor140),
-			typeof(LevelVendor160),typeof(LevelVendor180),typeof(LevelVendor200),typeof(LevelVendor230),
-			typeof(LevelVendor250)
-		};
-		public static bool VendorDiscountsExt(Type test)
-		{
-			foreach ( var type in _TypesVendor1 )
-			{
-				if ( test == type || test.IsSubclassOf (type))
-					return true;
-			}
-			return false;
-		/* Vendor Discount and Level Requirements! */
-		}
 	}
 }

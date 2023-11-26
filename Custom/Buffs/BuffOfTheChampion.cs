@@ -11,6 +11,7 @@ namespace Server.Custom
     {
         public static Dictionary<Mobile, bool> BuffOfTheChampionApplied = new Dictionary<Mobile, bool>();
         public static Dictionary<Mobile, DateTime> BuffOfTheChampionStartTime = new Dictionary<Mobile, DateTime>();
+        public static Dictionary<Mobile, Timer> BuffTimers = new Dictionary<Mobile, Timer>();
 
         public static void Initialize()
         {
@@ -52,7 +53,7 @@ namespace Server.Custom
         private static void ApplyBuff(Mobile mobile)
         {
             // Set the duration of the buff
-            TimeSpan duration = TimeSpan.FromHours(2);
+            TimeSpan duration = TimeSpan.FromMinutes(120);
 
             // Calculate the percentage increase in stats (5% in this case)
             double percentageIncrease = 0.1;
@@ -74,8 +75,21 @@ namespace Server.Custom
             // Optionally, you can notify the player about the buff
             mobile.SendMessage("You have received the Buff of the Champion for two hours!");
 
-            // You may also add additional effects or visuals here
+            // Schedule a cleanup task to remove the entry after one hour
+            Timer buffTimer = new BuffTimer(mobile);
+            buffTimer.Start();
+            BuffTimers[mobile] = buffTimer;
+    }
+
+    private static void RemoveBuffEntry(Mobile mobile)
+    {
+        if (BuffOfTheChampionApplied.ContainsKey(mobile) && BuffOfTheChampionApplied[mobile])
+        {
+            BuffOfTheChampionApplied[mobile] = false;
+            BuffOfTheChampionStartTime.Remove(mobile);
+            BuffTimers.Remove(mobile);
         }
+    }
 
         public static TimeSpan GetRemainingBuffDuration(Mobile mobile)
         {
@@ -83,7 +97,7 @@ namespace Server.Custom
             {
                 DateTime startTime = BuffOfTheChampionStartTime[mobile];
                 TimeSpan elapsed = DateTime.UtcNow - startTime;
-                TimeSpan remaining = TimeSpan.FromHours(2) - elapsed;
+                TimeSpan remaining = TimeSpan.FromMinutes(120) - elapsed;
 
                 return remaining > TimeSpan.Zero ? remaining : TimeSpan.Zero;
             }
@@ -95,6 +109,32 @@ namespace Server.Custom
         {
             // Check if the buff is applied to the mobile
             return BuffOfTheChampionApplied.ContainsKey(mobile) && BuffOfTheChampionApplied[mobile];
+    }
+
+    private class BuffTimer : Timer
+    {
+        private readonly Mobile _mobile;
+
+        public BuffTimer(Mobile mobile) : base(TimeSpan.FromMinutes(120), TimeSpan.FromMinutes(120))
+        {
+            _mobile = mobile;
+        }
+
+        protected override void OnTick()
+        {
+            if (_mobile != null && !_mobile.Deleted)
+            {
+                if (GetRemainingBuffDuration(_mobile) == TimeSpan.Zero)
+                {
+                    RemoveBuffEntry(_mobile);
+                    Stop();
+                }
+            }
+            else
+            {
+                Stop();
+            }
         }
     }
+}
 }

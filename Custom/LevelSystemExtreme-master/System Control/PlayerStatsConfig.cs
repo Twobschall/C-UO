@@ -8,7 +8,11 @@ using Server.Guilds;
 using Server.Mobiles;
 using Server.Network;
 using Server.Accounting;
+using Server.Custom;
 using System.Collections;
+using Xanthos.Interfaces;
+using Xanthos.ShrinkSystem;
+using Daat99MasterLooterSystem;
 
 namespace Server
 {
@@ -22,9 +26,10 @@ namespace Server
 			m.AddToBackPack(new Item(ValueifAny));
 			*/
 			m.AddToBackpack(new RedBook());
-			m.AddToBackpack(new Gold(5000));
+			m.AddToBackpack(new Gold(10000));
 			m.AddToBackpack(new Candle());
 			m.AddToBackpack(new Dagger());
+			//m.AddToBackpack(new MasterLooterBackpack());
 		}
 		#endregion
 	}
