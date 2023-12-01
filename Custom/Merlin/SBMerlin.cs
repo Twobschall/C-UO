@@ -34,11 +34,16 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(NightSightDeedWearable), 5000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(TravelBook), 10000, 999, 0x2D50, 0));
                 Add(new GenericBuyInfo(typeof(BankStone), 10000, 999, 0x1F1C, 0));
+                Add(new GenericBuyInfo(typeof(ArrowBag), 100000, 999, 0xE76, 0));
+                Add(new GenericBuyInfo(typeof(UniversalDyeTub), 100000, 999, 0xFAB, 0));
                 Add(new GenericBuyInfo(typeof(PetLeash), 200000, 999, 0x1374, 0));
                 Add(new GenericBuyInfo(typeof(BlessBag), 200000, 999, 0xE76, 0));
-                Add(new GenericBuyInfo(typeof(EtherealHorse), 200000, 999, 0x20DD, 0));
+                Add(new GenericBuyInfo(typeof(EtherealMountDeed), 250000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(OneHanderDeed), 250000, 999, 0x14F0, 0));
+                Add(new GenericBuyInfo(typeof(WeaponRangeDeed), 250000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(RaiseMaxLevelScroll), 1000000, 999, 0x14F0, 0));
+                Add(new GenericBuyInfo(typeof(ExtraHouseDeed), 1000000, 999, 0x14F0, 0));
+                Add(new GenericBuyInfo(typeof(IncreaseFollowersDeed), 2000000, 999, 0x14F0, 0));
             }
         }
 
