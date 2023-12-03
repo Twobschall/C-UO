@@ -41,6 +41,9 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(EtherealMountDeed), 250000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(OneHanderDeed), 250000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(WeaponRangeDeed), 250000, 999, 0x14F0, 0));
+                Add(new GenericBuyInfo(typeof(SinkFoundationDeed), 250000, 999, 0x14F0, 0));
+                Add(new GenericBuyInfo(typeof(MoveFoundationRightDeed), 250000, 999, 0x14F0, 0));
+                Add(new GenericBuyInfo(typeof(MoveFoundationLeftDeed), 250000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(RaiseMaxLevelScroll), 1000000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(ExtraHouseDeed), 1000000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(IncreaseFollowersDeed), 2000000, 999, 0x14F0, 0));
