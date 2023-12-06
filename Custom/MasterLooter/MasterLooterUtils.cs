@@ -128,7 +128,7 @@ namespace Daat99MasterLooterSystem
 				player.SendMessage( "You can't loot while you are invulnerable!");
 				return false;
 			}
-			foreach ( Mobile other in player.GetMobilesInRange( 5 ) )
+			foreach ( Mobile other in player.GetMobilesInRange( 10 ) ) //Distance To Loot
 			{
 				if ( ! ( other is PlayerMobile ) )
 					continue;

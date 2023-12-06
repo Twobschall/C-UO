@@ -11,6 +11,7 @@ namespace Daat99MasterLooterSystem
 {
     public class MasterLooterBackpack : Backpack
     {
+		public List<Property> Properties { get; set; }
 		//Change this to set the default loot settings for your players
 		public void RestoreDefaultSettings()
 		{
@@ -169,7 +170,7 @@ namespace Daat99MasterLooterSystem
         {
 			base.GetProperties( list );
 			list.Add(1060660, "Gold\t" + (GoldLedger?GoldAmount.ToString():"Inactive"));
-			list.Add(1060661, "Tokens\t" + (TokenLedger?TokensAmount.ToString():"Inactive"));
+			//list.Add(1060661, "Tokens\t" + (TokenLedger?TokensAmount.ToString():"Inactive"));
 			list.Add(1060662, "Looting\t" + LootSettingsString); //value: ~1_val~
 			list.Add(1060663, "Deleting\t" + (DeleteAllCorpses?"All Corpses":"Empty Corpses")); //value: ~1_val~
         }

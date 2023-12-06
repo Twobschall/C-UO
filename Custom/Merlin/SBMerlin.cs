@@ -29,11 +29,13 @@ namespace Server.Mobiles
         public class InternalBuyInfo : List<GenericBuyInfo>
         {
             public InternalBuyInfo()
-            {                
+            {                           
+                Add(new GenericBuyInfo(typeof(TrashBag), 100, 999, 0xE76, 0));   
                 Add(new GenericBuyInfo(typeof(ItemBlessDeed), 1000, 999, 0x14F0, 0));                
                 Add(new GenericBuyInfo(typeof(NightSightDeedWearable), 5000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(TravelBook), 10000, 999, 0x2D50, 0));
-                Add(new GenericBuyInfo(typeof(BankStone), 10000, 999, 0x1F1C, 0));
+                Add(new GenericBuyInfo(typeof(BankStone), 10000, 999, 0x1F1C, 0));     
+                Add(new GenericBuyInfo(typeof(PetBondingPotion), 10000, 999, 0xF04, 0));  
                 Add(new GenericBuyInfo(typeof(ArrowBag), 100000, 999, 0xE76, 0));
                 Add(new GenericBuyInfo(typeof(UniversalDyeTub), 100000, 999, 0xFAB, 0));
                 Add(new GenericBuyInfo(typeof(PetLeash), 200000, 999, 0x1374, 0));
@@ -44,7 +46,7 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(SinkFoundationDeed), 250000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(MoveFoundationRightDeed), 250000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(MoveFoundationLeftDeed), 250000, 999, 0x14F0, 0));
-                Add(new GenericBuyInfo(typeof(RaiseMaxLevelScroll), 1000000, 999, 0x14F0, 0));
+                Add(new GenericBuyInfo(typeof(TamingDeed), 250000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(ExtraHouseDeed), 1000000, 999, 0x14F0, 0));
                 Add(new GenericBuyInfo(typeof(IncreaseFollowersDeed), 2000000, 999, 0x14F0, 0));
             }
